@@ -754,7 +754,7 @@ h2 {
     }
 
     var label = t < 0.25 ? 'Sundown · open country' : t < 0.5 ? 'Dusk · the trail to town' : t < 0.78 ? 'Nightfall · city limits' : 'Midnight · downtown';
-    if (marker && marker.textContent !== label) marker.textContent = label;
+    if (marker && marker.__l !== label) { marker.__l = label; marker.textContent = label; }
     updateRail();
     if (!reduce) requestAnimationFrame(draw);
   }
@@ -887,7 +887,7 @@ h2 {
     b.addEventListener('click', function () {
       var q = +b.getAttribute('data-q');
       askButtons.forEach(function (o) { o.setAttribute('aria-pressed', o === b ? 'true' : 'false'); });
-      var out = el('answer'), text = ANSWERS[q];
+      var out = el('answer'), text = window.__tr ? window.__tr(ANSWERS[q]) : ANSWERS[q];
       if (typing) clearInterval(typing);
       if (reduce) { out.textContent = text; return; }
       var n = 0;
@@ -905,6 +905,7 @@ h2 {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(queue);
 })();
 </script>
+<script src="i18n.js"></script>
 
 </body>
 </html>
