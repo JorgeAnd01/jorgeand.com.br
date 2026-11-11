@@ -286,6 +286,34 @@ h2 {
   margin: 0;
 }
 
+/* The crew (agents run the same queue) */
+.crew { display: flex; flex-direction: column; gap: 0.9rem; min-width: 0; }
+.log {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  max-height: 17rem;
+  overflow: auto;
+  border-block: 1px dashed var(--rule);
+  padding-block: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.row { display: grid; grid-template-columns: 3.8rem 8rem 1fr auto; gap: 0.6rem; }
+.row > * { min-width: 0; overflow-wrap: anywhere; }
+.row.gap { margin-top: 0.55rem; }
+.row .tag { color: var(--paper-dim); letter-spacing: 0.08em; }
+.row.mcp .tag { color: var(--neon); }
+.row.brief { color: var(--teal); }
+.row.brief.back { color: var(--ember); }
+.row .st.ok { color: var(--teal); }
+.row .st.bad { color: var(--ember); }
+@media (max-width: 30rem) {
+  .row { grid-template-columns: 3.4rem 1fr; gap: 0 0.6rem; }
+  .row > :nth-child(n+3) { grid-column: 2; }
+}
+
 /* Straight answers */
 .asks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .asks .btn { text-transform: none; letter-spacing: 0.02em; font-size: 0.84rem; text-align: left; }
@@ -500,7 +528,7 @@ h2 {
   <section class="panel city" id="shift">
     <p class="chapter-mark">Side job · Work a shift</p>
     <h2>Do my job for one minute</h2>
-    <p>Six apps want to go live on payment terminals. This is a simplified version of the review I do. Approve an app only if all four checks pass. Otherwise send it back.</p>
+    <p>Six apps want to go live on payment terminals. This is a simplified version of the review I do. Approve an app only if all four checks pass. Otherwise send it back. Then hand the same queue to the agents.</p>
     <div class="desk" id="desk">
       <div class="desk-top">
         <span id="deskCount">Submission 1 of 6</span>
@@ -519,13 +547,23 @@ h2 {
       <div class="desk-actions" id="deskActions">
         <button type="button" class="btn go" id="btnApprove">Approve</button>
         <button type="button" class="btn stop" id="btnReject">Send back</button>
+        <button type="button" class="btn" id="btnCrew2">Let the agents do it</button>
       </div>
       <p class="verdict" id="verdict" aria-live="polite">Read the four lines, then decide.</p>
       <div class="debrief" id="debrief" hidden>
         <p class="score" id="score"></p>
         <p id="debriefText"></p>
         <p>Real tickets carry far more than four lines, and they arrive every day. My agents read all of them first and hand a person a short brief. The button stays human.</p>
-        <div class="desk-actions"><button type="button" class="btn" id="btnAgain">Work another shift</button></div>
+        <div class="desk-actions"><button type="button" class="btn go" id="btnCrew">Now call in the agents</button><button type="button" class="btn" id="btnAgain">Work another shift</button></div>
+      </div>
+      <div class="crew" id="crew" hidden>
+        <div class="log" id="crewLog"></div>
+        <p class="verdict" id="crewNote" aria-live="polite"></p>
+        <div class="desk-actions">
+          <button type="button" class="btn go" id="btnSign" hidden>Sign all six</button>
+          <button type="button" class="btn" id="btnManual">Back to doing it by hand</button>
+        </div>
+        <p class="fine">Simulated run with invented apps. It shows how the pieces fit: the MCP server reads the ticket, the agents check it, a person signs.</p>
       </div>
     </div>
   </section>
@@ -830,7 +868,7 @@ h2 {
     }
     renderPips();
   }
-  function setButtons(disabled) { el('btnApprove').disabled = disabled; el('btnReject').disabled = disabled; }
+  function setButtons(disabled) { el('btnApprove').disabled = disabled; el('btnReject').disabled = disabled; el('btnCrew2').disabled = disabled; }
   function decide(approve) {
     if (busy) return;
     busy = true; setButtons(true);
@@ -854,6 +892,7 @@ h2 {
   }
   function finish() {
     el('deskCard').hidden = true; el('checks').hidden = true; el('deskActions').hidden = true; el('verdict').hidden = true;
+    manualMs = performance.now() - (shiftStart || performance.now());
     el('deskCount').textContent = 'Shift over';
     el('score').textContent = right + ' of ' + APPS.length + ' right';
     el('debriefText').textContent = right === APPS.length
@@ -864,6 +903,7 @@ h2 {
   }
   function restart() {
     idx = 0; right = 0; results = []; busy = false;
+    shiftStart = performance.now();
     el('deskCard').hidden = false; el('checks').hidden = false; el('deskActions').hidden = false;
     var v = el('verdict'); v.hidden = false; v.className = 'verdict'; v.textContent = 'Read the four lines, then decide.';
     el('debrief').hidden = true;
@@ -873,6 +913,64 @@ h2 {
   el('btnApprove').addEventListener('click', function () { decide(true); });
   el('btnReject').addEventListener('click', function () { decide(false); });
   el('btnAgain').addEventListener('click', restart);
+
+  /* ---------- The crew: agents run the same queue ---------- */
+  var shiftStart = 0, manualMs = 0, crewRun = 0;
+  el('desk').addEventListener('pointerenter', function () { if (!shiftStart) shiftStart = performance.now(); });
+  function span(cls, text) { var s = document.createElement('span'); if (cls) s.className = cls; s.textContent = text; return s; }
+  function row(cls, parts) {
+    var r = document.createElement('div');
+    r.className = 'row ' + cls;
+    parts.forEach(function (p) { r.appendChild(span(p[0], p[1])); });
+    return r;
+  }
+  function crewRows() {
+    var rows = [];
+    APPS.forEach(function (a, n) {
+      rows.push(row('mcp' + (n ? ' gap' : ''), [['tag', 'MCP'], ['', a.name], ['', 'ticket opened']]));
+      for (var i = 0; i < LABELS.length; i++) {
+        rows.push(row('agent', [['tag', 'AGENT'], ['', LABELS[i]], ['', a.bad === i ? FAIL[i] : PASS[i]], [a.bad === i ? 'st bad' : 'st ok', a.bad === i ? 'FAIL' : 'ok']]));
+      }
+      rows.push(row('brief' + (a.bad === -1 ? '' : ' back'), [['tag', 'BRIEF'], ['', a.bad === -1 ? 'Approve' : 'Send back'], ['', a.bad === -1 ? 'All four checks pass.' : WHY[a.bad]]]));
+      rows.push(row('mcp', [['tag', 'MCP'], ['', a.name], ['', 'brief attached to the ticket']]));
+    });
+    return rows;
+  }
+  function runCrew() {
+    var id = ++crewRun, log = el('crewLog'), rows = crewRows(), i = 0;
+    busy = true;
+    ['deskCard', 'checks', 'deskActions', 'verdict', 'debrief'].forEach(function (k) { el(k).hidden = true; });
+    el('crew').hidden = false;
+    el('btnSign').hidden = true;
+    el('deskCount').textContent = 'Agents on the queue';
+    results = []; renderPips();
+    log.textContent = '';
+    el('crewNote').textContent = '';
+    function done() {
+      el('crewNote').textContent = 'Six briefs ready.' + (manualMs ? ' By hand, the same queue took you ' + (manualMs / 1000).toFixed(1) + ' seconds.' : '') + ' Nothing is live until a person signs.';
+      el('btnSign').hidden = false;
+    }
+    function step() {
+      if (id !== crewRun) return;
+      if (i >= rows.length) { done(); return; }
+      log.appendChild(rows[i++]);
+      log.scrollTop = log.scrollHeight;
+      setTimeout(step, 150);
+    }
+    if (reduce) { rows.forEach(function (r) { log.appendChild(r); }); done(); } else step();
+  }
+  function signAll() {
+    results = APPS.map(function () { return true; });
+    renderPips();
+    el('deskCount').textContent = 'Queue signed';
+    el('crewNote').textContent = 'Signed. Two apps go live, four go back with the reason attached. The agents did the reading. You made the call.';
+    el('btnSign').hidden = true;
+  }
+  function backToManual() { crewRun++; el('crew').hidden = true; restart(); }
+  el('btnCrew').addEventListener('click', runCrew);
+  el('btnCrew2').addEventListener('click', runCrew);
+  el('btnSign').addEventListener('click', signAll);
+  el('btnManual').addEventListener('click', backToManual);
   renderPips();
 
   /* ---------- Straight answers ---------- */
