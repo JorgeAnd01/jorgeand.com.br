@@ -72,7 +72,7 @@
     'I point at running code.': 'Eu aponto para código rodando.',
     'Side job · Work a shift': 'Bico · Faça um turno',
     'Do my job for one minute': 'Faça o meu trabalho por um minuto',
-    'Six apps want to go live on payment terminals. This is a simplified version of the review I do. Approve an app only if all four checks pass. Otherwise send it back.': 'Seis apps querem entrar em produção nos terminais de pagamento. Esta é uma versão simplificada da análise que eu faço. Aprove um app somente se as quatro verificações passarem. Caso contrário, devolva.',
+    'Six apps want to go live on payment terminals. This is a simplified version of the review I do. Approve an app only if all four checks pass. Otherwise send it back. Then hand the same queue to the agents.': 'Seis apps querem entrar em produção nos terminais de pagamento. Esta é uma versão simplificada da análise que eu faço. Aprove um app somente se as quatro verificações passarem. Caso contrário, devolva. Depois entregue a mesma fila aos agentes.',
     'Bakery point of sale': 'Ponto de venda de padaria',
     'Bar tabs and split bills': 'Comandas de bar e divisão de conta',
     'Grocery checkout': 'Caixa de mercado',
@@ -98,6 +98,24 @@
     'One slip is all it takes for a bad build to reach a shop counter, or for a good one to wait another week.': 'Basta um deslize para um build ruim chegar ao balcão de uma loja, ou para um bom esperar mais uma semana.',
     'Real tickets carry far more than four lines, and they arrive every day. My agents read all of them first and hand a person a short brief. The button stays human.': 'Tickets de verdade têm muito mais do que quatro linhas, e chegam todos os dias. Meus agentes leem todos primeiro e entregam a uma pessoa um resumo curto. O botão continua humano.',
     'Work another shift': 'Fazer outro turno',
+    'Let the agents do it': 'Deixar com os agentes',
+    'Now call in the agents': 'Agora chame os agentes',
+    'Agents on the queue': 'Agentes na fila',
+    'ticket opened': 'ticket aberto',
+    'brief attached to the ticket': 'resumo anexado ao ticket',
+    'All four checks pass.': 'As quatro verificações passam.',
+    'the manifest has extractNativeLibs set to false': 'o manifest está com extractNativeLibs em false',
+    'the malware scan flagged it': 'a varredura de malware acusou o app',
+    'the refund flow was never tested': 'o fluxo de estorno nunca foi testado',
+    'the app is not in Brazilian Portuguese': 'o app não está em português do Brasil',
+    'Sign all six': 'Assinar os seis',
+    'Back to doing it by hand': 'Voltar a fazer à mão',
+    'Queue signed': 'Fila assinada',
+    'Signed. Two apps go live, four go back with the reason attached. The agents did the reading. You made the call.': 'Assinado. Dois apps entram em produção, quatro voltam com o motivo anexado. Os agentes fizeram a leitura. A decisão foi sua.',
+    'Simulated run with invented apps. It shows how the pieces fit: the MCP server reads the ticket, the agents check it, a person signs.': 'Execução simulada com apps inventados. Mostra como as peças se encaixam: o servidor MCP lê o ticket, os agentes verificam, uma pessoa assina.',
+    'AGENT': 'AGENTE',
+    'BRIEF': 'RESUMO',
+    'FAIL': 'FALHA',
     'Side job · Straight answers': 'Bico · Respostas diretas',
     'Ask me what you would ask anyway': 'Pergunte o que você perguntaria de qualquer jeito',
     'What do you do all day?': 'O que você faz o dia todo?',
@@ -139,7 +157,8 @@
     [/^Submission (\d+) of (\d+)$/, function (m) { return 'Envio ' + m[1] + ' de ' + m[2]; }],
     [/^(\d+) of (\d+) right$/, function (m) { return m[1] + ' de ' + m[2] + ' certos'; }],
     [/^Right\. It goes back because (.+)\.$/, function (m) { return WHY[m[1]] ? 'Certo. Ele volta porque ' + WHY[m[1]] + '.' : null; }],
-    [/^Missed it\. It should go back because (.+)\.$/, function (m) { return WHY[m[1]] ? 'Passou batido. Ele deveria voltar porque ' + WHY[m[1]] + '.' : null; }]
+    [/^Missed it\. It should go back because (.+)\.$/, function (m) { return WHY[m[1]] ? 'Passou batido. Ele deveria voltar porque ' + WHY[m[1]] + '.' : null; }],
+    [/^Six briefs ready\.( By hand, the same queue took you ([\d.]+) seconds\.)? Nothing is live until a person signs\.$/, function (m) { return 'Seis resumos prontos.' + (m[2] ? ' À mão, a mesma fila levou ' + m[2].replace('.', ',') + ' segundos.' : '') + ' Nada entra em produção até uma pessoa assinar.'; }]
   ];
   var REV = {};
   Object.keys(D).forEach(function (k) { REV[D[k]] = k; });
