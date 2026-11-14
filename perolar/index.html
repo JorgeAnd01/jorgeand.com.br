@@ -445,8 +445,7 @@ footer .legal{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);
         <div class="pronto" id="agPronto" hidden>
           <p class="okmsg">Pedido pronto.</p>
           <p id="agComo"></p>
-          <button class="btn" type="button" id="agCopiar">Copiar pedido</button>
-          <a class="btn ghost" id="agZap" href="#" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+          <a class="btn" id="agZap" href="#" target="_blank" rel="noopener">Enviar pedido pelo WhatsApp</a>
         </div>
       </aside>
     </form>
@@ -644,13 +643,8 @@ $("#formAgenda").addEventListener("submit", e => {
     obs ? "Observações: "+obs : ""
   ].filter(Boolean).join("\n");
   $("#agZap").href = CLINICA.whatsapp ? "https://wa.me/"+CLINICA.whatsapp+"?text="+encodeURIComponent(mensagem) : CLINICA.whatsappLink;
-  $("#agComo").textContent = CLINICA.whatsapp ? "Falta só enviar para a clínica. O horário vale depois da confirmação." : "Copie o pedido, abra o WhatsApp da Perolar e cole na conversa. O horário vale depois da confirmação.";
+  $("#agComo").textContent = CLINICA.whatsapp ? "Falta só enviar para a clínica. O horário vale depois da confirmação." : "Abra o WhatsApp da Perolar e envie seu pedido. O horário vale depois da confirmação.";
   $("#agPronto").hidden = false;
-  $("#agCopiar").textContent = "Copiar pedido";
-});
-$("#agCopiar").addEventListener("click", async e => {
-  try{ await navigator.clipboard.writeText(mensagem); e.target.textContent = "Pedido copiado"; }
-  catch(_){ e.target.textContent = "Não foi possível copiar"; }
 });
 
 /* botões "agendar" espalhados pela página */
