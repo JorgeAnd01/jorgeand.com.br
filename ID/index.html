@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Emergency information · Jorge Andrade Rodrigues</title>
+<style>
+  :root {
+    --bg: #fbfbfe;
+    --card: #e8eefb;
+    --ink: #16181d;
+    --muted: #565b66;
+    --line: #b4c4ea;
+    --accent: #0b5cad;
+    --accent-ink: #ffffff;
+    --alert: #8a1c1c;
+    --alert-bg: #fbeceb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1218;
+      --card: #1a2338;
+      --ink: #f1f1ee;
+      --muted: #a9aeb8;
+      --line: #34446b;
+      --accent: #6db3ff;
+      --accent-ink: #0b1622;
+      --alert: #ffb4ab;
+      --alert-bg: #3a1614;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 18px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 20px 16px 48px; }
+  header { text-align: center; }
+  .symbol { display: block; margin: 0 auto 12px; }
+  .eyebrow {
+    display: inline-block;
+    background: var(--alert-bg);
+    color: var(--alert);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+  h1 { font-size: 30px; line-height: 1.15; margin: 14px 0 6px; }
+  .lead { font-size: 20px; font-weight: 600; margin: 0 0 20px; }
+  section {
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    padding: 18px;
+    margin-top: 14px;
+  }
+  h2 { font-size: 19px; margin: 0 0 10px; }
+  p { margin: 0 0 10px; }
+  p:last-child { margin-bottom: 0; }
+  ul { margin: 0; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  li:last-child { margin-bottom: 0; }
+  .contact-name { font-size: 22px; font-weight: 700; margin: 0; }
+  .contact-phone { color: var(--muted); margin: 2px 0 14px; }
+  .btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+  }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-secondary { color: var(--accent); margin-top: 10px; }
+  .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  dl { margin: 0; }
+  dt { font-weight: 700; margin-top: 12px; }
+  dt:first-child { margin-top: 0; }
+  dd { margin: 2px 0 0; color: var(--muted); }
+  .small { font-size: 16px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg class="symbol" viewBox="0 0 80 112" width="69" height="96" role="img" aria-label="Puzzle ribbon, the autism awareness symbol adopted in Brazil">
+      <defs>
+        <pattern id="puzzle" width="24" height="24" patternUnits="userSpaceOnUse">
+          <rect width="12" height="12" fill="#e53935"/>
+          <rect x="12" width="12" height="12" fill="#fdd835"/>
+          <rect y="12" width="12" height="12" fill="#1e88e5"/>
+          <rect x="12" y="12" width="12" height="12" fill="#29b6f6"/>
+          <circle cx="12" cy="6" r="3" fill="#e53935"/>
+          <circle cx="18" cy="12" r="3" fill="#fdd835"/>
+          <circle cx="12" cy="18" r="3" fill="#29b6f6"/>
+          <circle cx="6" cy="12" r="3" fill="#1e88e5"/>
+          <circle cx="0" cy="6" r="3" fill="#fdd835"/><circle cx="24" cy="6" r="3" fill="#fdd835"/>
+          <circle cx="0" cy="18" r="3" fill="#1e88e5"/><circle cx="24" cy="18" r="3" fill="#1e88e5"/>
+        </pattern>
+      </defs>
+      <path d="M20,106 L50,42 C60,20 50,8 40,8 C30,8 20,20 30,42 L60,106" fill="none" stroke="url(#puzzle)" stroke-width="15" stroke-linejoin="round"/>
+    </svg>
+    <div><span class="eyebrow">Emergency information</span></div>
+    <h1>Jorge Andrade Rodrigues</h1>
+    <p class="lead">I am autistic (ASD, support level 1) and have ADHD.</p>
+  </header>
+
+  <section aria-labelledby="contact">
+    <h2 id="contact">Emergency contact</h2>
+    <p class="contact-name">Amanda Carvalho de Souza</p>
+    <p class="contact-phone">+55 11 94459-3018 (Brazil)</p>
+    <a class="btn btn-primary" href="tel:+5511944593018">Call Amanda</a>
+    <a class="btn btn-secondary" href="https://wa.me/5511944593018">Send a WhatsApp message</a>
+  </section>
+
+  <section aria-labelledby="help">
+    <h2 id="help">If I am in crisis or unable to speak</h2>
+    <ul>
+      <li>Speak calmly, in short and direct sentences.</li>
+      <li>Reduce noise, bright light and strong smells, or take me somewhere quieter.</li>
+      <li>Tell me what you are about to do before you do it. Sudden changes can make the crisis worse.</li>
+      <li>Let me use ear defenders or glasses if I have them with me.</li>
+      <li>Call my emergency contact. I have the right to a companion.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="diag">
+    <h2 id="diag">Diagnosis</h2>
+    <dl>
+      <dt>Autism Spectrum Disorder (ASD)</dt>
+      <dd>Support level 1, without intellectual disability and with functional language. ICD-10 F84.0 · ICD-11 6A02.0</dd>
+      <dt>Attention Deficit Hyperactivity Disorder (ADHD)</dt>
+      <dd>ICD-10 F90 · ICD-11 6A05.0</dd>
+      <dt>Sensory hypersensitivity</dt>
+      <dd>Noise, lighting and strong smells can trigger a crisis.</dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="rights">
+    <h2 id="rights">Rights in Brazil</h2>
+    <ul>
+      <li>Person with a disability for all legal purposes (Law 12.764/12).</li>
+      <li>Priority service.</li>
+      <li>Presence of a companion.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="report">
+    <h2 id="report">Medical report</h2>
+    <p>Issued on 22 October 2025 by Dr. Ana Flávia Oliveira, psychiatrist, CRM-SP 231670 (Brazilian medical licence).</p>
+    <p class="small">Valid indefinitely (São Paulo State Law 17.669/2023). The full document can be presented on request.</p>
+  </section>
+
+  <section lang="pt-BR" aria-labelledby="pt">
+    <h2 id="pt">Em português</h2>
+    <p>Sou autista (TEA, nível 1 de suporte) e tenho TDAH. Em sobrecarga sensorial posso não conseguir falar. Fale com calma, reduza barulho e luz forte, avise antes o que vai fazer e ligue para o meu contato de emergência acima.</p>
+  </section>
+</main>
+</body>
+</html>
