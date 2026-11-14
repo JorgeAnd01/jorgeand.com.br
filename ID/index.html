@@ -81,6 +81,9 @@
   }
   .btn-primary { background: var(--accent); color: var(--accent-ink); }
   .btn-secondary { color: var(--accent); margin-top: 10px; }
+  .btn-danger { background: #b3261e; border-color: #b3261e; color: #ffffff; width: 100%; font-family: inherit; cursor: pointer; margin-bottom: 6px; }
+  .btn-danger small { display: block; font-size: 15px; font-weight: 500; margin-top: 2px; }
+  .status { min-height: 24px; font-size: 16px; color: var(--muted); margin: 0 0 12px; }
   .btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
   dl { margin: 0; }
   dt { font-weight: 700; margin-top: 12px; }
@@ -118,6 +121,8 @@
     <h2 id="contact">Emergency contact</h2>
     <p class="contact-name">Amanda Carvalho de Souza</p>
     <p class="contact-phone">+55 11 94459-3018 (Brazil)</p>
+    <button class="btn btn-danger" id="lost" type="button">Emergency button<small>Botão de emergência · sends my location to Amanda</small></button>
+    <p class="status" id="lost-status" role="status" aria-live="polite"></p>
     <a class="btn btn-primary" href="tel:+5511944593018">Call Amanda</a>
     <a class="btn btn-secondary" href="https://wa.me/5511944593018">Send a WhatsApp message</a>
   </section>
@@ -165,5 +170,29 @@
     <p>Sou autista (TEA, nível 1 de suporte) e tenho TDAH. Em sobrecarga sensorial posso não conseguir falar. Fale com calma, reduza barulho e luz forte, avise antes o que vai fazer e ligue para o meu contato de emergência acima.</p>
   </section>
 </main>
+<script>
+(function () {
+  var btn = document.getElementById("lost");
+  var status = document.getElementById("lost-status");
+  var phone = "5511944593018";
+  function send(place) {
+    var msg = "Lobo perdido. " + place;
+    status.textContent = "Opening WhatsApp… / Abrindo o WhatsApp…";
+    window.location.href = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+  }
+  function noLocation() {
+    send("Localização não disponível. Ligue para o Jorge.");
+  }
+  btn.addEventListener("click", function () {
+    if (!navigator.geolocation) { noLocation(); return; }
+    status.textContent = "Getting location… / Obtendo a localização…";
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      var c = pos.coords;
+      send("Localização: https://maps.google.com/?q=" + c.latitude.toFixed(6) + "," + c.longitude.toFixed(6) +
+        " (±" + Math.round(c.accuracy) + " m)");
+    }, noLocation, { enableHighAccuracy: true, timeout: 12000, maximumAge: 0 });
+  });
+})();
+</script>
 </body>
 </html>
