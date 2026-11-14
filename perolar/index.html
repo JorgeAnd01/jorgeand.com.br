@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Perolar Odontologia</title>
+<meta name="description" content="Perolar Odontologia: agende sua avaliação online, descubra a consulta certa para você e fale com a clínica pelo WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: coluna única larga, assimétrica no topo (texto à esquerda, pérola à direita);
+   o nácar da pérola é o único lugar com brilho, o resto fica quieto em petróleo e névoa. */
+:root{
+  --bg:#F2F7F3;
+  --surface:#FFFFFF;
+  --sunken:#E2EFE7;
+  --ink:#173A2E;
+  --muted:#4C665B;
+  --line:#CCDFD4;
+  --brand:#1F5E48;
+  --brand-ink:#FFFFFF;
+  --accent:#8F660B;
+  --gold:#E3B54A;
+  --sage:#86BFA5;
+  --rose:#DE8497;
+  --deep:#154233;
+  --deep-ink:#F2F7F1;
+  --deep-muted:#BFD8CB;
+  --ok:#1C7A4A;
+  --warn-bg:#FCEFF1;
+  --warn-ink:#8A2A40;
+  --tooth:#F2E6C6;
+  --display:"Marcellus","Palatino Linotype",Georgia,serif;
+  --body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:18px;
+  --wrap:1120px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0B1E17;--surface:#132B22;--sunken:#0F251D;--ink:#E8F2EC;--muted:#9FB8AC;--line:#264437;
+    --brand:#8AD3B2;--brand-ink:#06281C;--accent:#E9C46A;--deep:#18392D;--ok:#6FD59C;--warn-bg:#3A1A23;--warn-ink:#FFC2CE;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0B1E17;--surface:#132B22;--sunken:#0F251D;--ink:#E8F2EC;--muted:#9FB8AC;--line:#264437;
+  --brand:#8AD3B2;--brand-ink:#06281C;--accent:#E9C46A;--deep:#18392D;--ok:#6FD59C;--warn-bg:#3A1A23;--warn-ink:#FFC2CE;
+  color-scheme:dark;
+}
+:root.grande{font-size:118%}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+img,svg{max-width:100%}
+a{color:var(--brand)}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.005em}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:400}
+h2{font-size:clamp(1.8rem,5vw,2.9rem);font-weight:400}
+h3{font-family:var(--body);font-size:1.12rem;font-weight:700;letter-spacing:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+.lead{color:var(--muted);max-width:60ch;margin-top:14px}
+.eyebrow{font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem var(--body);padding:14px 22px;border-radius:999px;border:2px solid var(--brand);background:var(--brand);color:var(--brand-ink);text-decoration:none;cursor:pointer;min-height:48px}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--brand)}
+.btn.small{padding:8px 16px;min-height:40px;font-size:.92rem}
+
+/* topo */
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:16px;padding-top:10px;padding-bottom:10px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:400;font-size:1.35rem;letter-spacing:.01em;line-height:1.1}
+.logo small{display:block;font:500 .68rem var(--body);letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:-2px}
+.logo svg{width:44px;height:44px;flex:none;color:var(--brand)}
+.mini-pearl{width:30px;height:30px;border-radius:50%;flex:none;background:radial-gradient(circle at 32% 28%,#fff 0 12%,#f6e9f0 30%,#cfe6ea 55%,#b9c7de 78%,#8fa3b8 100%);box-shadow:inset -3px -4px 8px rgba(40,60,90,.25)}
+.top nav{margin-left:auto;display:flex;gap:22px}
+.top nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
+.top nav a:hover{color:var(--brand)}
+.a11y{display:flex;gap:6px}
+.a11y button{font:700 .85rem var(--body);min-width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.a11y button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+@media (max-width:900px){.top nav{display:none}.a11y{margin-left:auto}.top .btn{display:none}}
+
+/* hero */
+.hero{padding:48px 0 56px;overflow:hidden;background:radial-gradient(60% 80% at 85% 20%,color-mix(in srgb,var(--sage) 35%,transparent),transparent 70%),radial-gradient(40% 60% at 5% 100%,color-mix(in srgb,var(--gold) 22%,transparent),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.hero p.lead{font-size:1.15rem}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.pearl-stage{position:relative;aspect-ratio:1;max-width:400px;width:100%;margin:0 auto}
+.pearl{position:absolute;inset:8%;border-radius:50%;
+  background:
+   radial-gradient(circle at 30% 26%,rgba(255,255,255,.98) 0 7%,rgba(255,255,255,0) 26%),
+   radial-gradient(circle at 70% 78%,rgba(255,196,214,.55),rgba(255,196,214,0) 45%),
+   radial-gradient(circle at 24% 76%,rgba(160,226,228,.6),rgba(160,226,228,0) 46%),
+   radial-gradient(circle at 76% 24%,rgba(196,190,240,.55),rgba(196,190,240,0) 46%),
+   radial-gradient(circle at 42% 38%,#FBFAF7 0,#EDEBF0 48%,#C3CCD8 82%,#93A4B6 100%);
+  box-shadow:inset -18px -26px 50px rgba(50,70,100,.28),0 40px 60px -30px rgba(15,60,70,.5)}
+.pearl::after{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(255,180,205,.0),rgba(150,230,235,.35),rgba(200,190,255,.0),rgba(255,214,170,.3),rgba(255,180,205,.0));mix-blend-mode:soft-light;animation:nacar 14s linear infinite}
+@keyframes nacar{to{transform:rotate(360deg)}}
+.ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line)}
+.ring{border-color:var(--sage)}
+.ring.b{inset:-9%;border-style:dashed;border-color:var(--gold);opacity:.8}
+.chip-float{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:.85rem;font-weight:600;box-shadow:0 10px 24px -14px rgba(0,40,50,.5)}
+.chip-float span{display:block;font-weight:400;color:var(--muted);font-size:.78rem}
+.chip-float.a{left:-2%;bottom:14%;border-left:4px solid var(--gold)}
+.chip-float.c{right:-2%;top:12%;border-left:4px solid var(--sage)}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.pearl-stage{max-width:280px;order:-1}.hero{padding-top:28px}}
+@media (prefers-reduced-motion:reduce){.pearl::after{animation:none}html{scroll-behavior:auto}}
+
+/* faixa */
+.faixa{padding:0}
+.faixa ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);--line:rgba(255,255,255,.16);border-radius:var(--r);background:var(--deep);overflow:hidden}
+.faixa li{padding:20px;border-right:1px solid var(--line);font-size:.95rem;color:var(--deep-muted)}
+.faixa li:last-child{border-right:0}
+.faixa b{display:block;color:var(--gold);font-family:var(--display);font-weight:400;font-size:1.15rem;margin-bottom:4px}
+@media (max-width:820px){.faixa ul{grid-template-columns:1fr 1fr}.faixa li:nth-child(2){border-right:0}.faixa li:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:440px){.faixa ul{grid-template-columns:1fr}.faixa li{border-right:0;border-bottom:1px solid var(--line)}.faixa li:last-child{border-bottom:0}}
+
+/* tratamentos */
+.trats{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:32px}
+.trat{background:var(--surface);padding:24px;display:flex;flex-direction:column;gap:10px}
+.trat{border-top:5px solid var(--brand)}
+.trat:nth-child(4n+2){border-top-color:var(--gold)}
+.trat:nth-child(4n+3){border-top-color:var(--sage)}
+.trat:nth-child(4n+4){border-top-color:var(--rose)}
+.trat p{color:var(--muted);font-size:.96rem;flex:1}
+.trat button{align-self:flex-start;background:none;border:0;padding:6px 0;font:600 .95rem var(--body);color:var(--brand);cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+
+/* blocos em duas colunas */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+@media (max-width:820px){.duo{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.band{background:var(--sunken)}
+
+/* triagem */
+.opts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:44px;padding:9px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);font-weight:500;font-size:.95rem}
+.chip input:checked+span{background:var(--brand);border-color:var(--brand);color:var(--brand-ink)}
+.chip input:focus-visible+span{outline:3px solid var(--accent);outline-offset:3px}
+.chip input:disabled+span{opacity:.4}
+.resultado{margin-top:20px;border-left:4px solid var(--brand);padding:4px 0 4px 18px}
+.resultado h3{margin-bottom:6px}
+.resultado p{color:var(--muted);margin-bottom:12px}
+.alerta{background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;padding:12px 16px;font-size:.93rem;margin:12px 0}
+
+/* escala de cor */
+.sorriso{display:block;width:100%;max-width:420px;margin:0 auto}
+.escala{display:flex;justify-content:space-between;font:600 .8rem var(--body);color:var(--muted);margin-top:6px}
+input[type=range]{width:100%;accent-color:var(--brand);height:36px}
+.nota{font-size:.84rem;color:var(--muted);margin-top:10px}
+
+/* passos */
+.passos{counter-reset:p;list-style:none;margin:32px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.passos li{counter-increment:p;border-top:3px solid var(--gold);padding-top:14px}
+.passos li::before{content:counter(p,decimal-leading-zero);font:400 2rem var(--display);color:var(--accent);display:block;line-height:1;margin-bottom:10px}
+.passos p{color:var(--muted);font-size:.95rem;margin-top:6px}
+@media (max-width:820px){.passos{grid-template-columns:1fr 1fr}}
+@media (max-width:440px){.passos{grid-template-columns:1fr}}
+
+/* agendamento */
+.agenda{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start;margin-top:32px}
+@media (max-width:900px){.agenda{grid-template-columns:1fr}}
+fieldset{border:0;padding:0;margin:0 0 28px;min-width:0}
+legend{font:400 1.1rem var(--display);padding:0;margin-bottom:4px}
+legend i{font-style:normal;color:var(--accent);margin-right:8px}
+.hint{color:var(--muted);font-size:.9rem}
+.dias{display:flex;gap:10px;overflow-x:auto;padding:14px 2px 10px;scrollbar-width:thin}
+.dia span{flex-direction:column;border-radius:14px;min-width:66px;padding:8px 10px;line-height:1.2;text-align:center}
+.dia span small{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
+.dia span b{font:400 1.3rem var(--display)}
+.campos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.campos .full{grid-column:1/-1}
+@media (max-width:520px){.campos{grid-template-columns:1fr}}
+label.f{display:block;font-weight:600;font-size:.9rem}
+label.f input,label.f textarea,label.f select{display:block;width:100%;margin-top:6px;font:400 1rem var(--body);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px}
+label.f textarea{min-height:84px;resize:vertical}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.9rem;color:var(--muted);margin-top:14px}
+.check input{width:22px;height:22px;flex:none;margin-top:2px;accent-color:var(--brand)}
+.erro{color:var(--warn-ink);background:var(--warn-bg);border-radius:10px;padding:10px 14px;font-size:.92rem;margin-top:14px}
+.resumo{position:sticky;top:84px}
+.resumo dl{margin:14px 0 18px;display:grid;gap:10px}
+.resumo dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.resumo dd{margin:0;font-weight:600}
+.resumo .btn{width:100%}
+.pronto{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
+.pronto p{font-size:.93rem;color:var(--muted);margin-bottom:12px}
+.pronto .btn+.btn{margin-top:10px}
+.okmsg{color:var(--ok);font-weight:700}
+[hidden]{display:none!important}
+
+/* urgência + faq */
+details{border-bottom:1px solid var(--line);padding:14px 0}
+details summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";font:400 1.3rem var(--display);color:var(--brand);line-height:1}
+details[open] summary::after{content:"–"}
+details p,details ol{color:var(--muted);margin:10px 0 0;font-size:.97rem;max-width:65ch}
+details ol{padding-left:20px}
+
+/* tecnologia */
+.tec{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+.tec div{border-top:3px solid var(--sage);padding-top:14px}
+.tec p{color:var(--muted);font-size:.95rem;margin-top:6px}
+@media (max-width:820px){.tec{grid-template-columns:1fr}}
+
+/* plano */
+.plano{background:var(--deep);color:var(--deep-ink)}
+.plano .eyebrow{color:var(--gold)}
+.plano .lead{color:var(--deep-muted)}
+.beneficios{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:32px}
+.beneficios div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:20px}
+.beneficios h3{color:var(--gold);margin-bottom:6px}
+.beneficios p{color:var(--deep-muted);font-size:.95rem}
+.publico{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0;padding:0;list-style:none}
+.publico li{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:8px 16px;font-size:.92rem;font-weight:600}
+.plano .acts{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:28px}
+.plano .btn{background:var(--gold);border-color:var(--gold);color:#1d2a12}
+.plano .nota{color:var(--deep-muted);max-width:52ch;margin:0}
+@media (max-width:900px){.beneficios{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.beneficios{grid-template-columns:1fr}}
+
+footer{background:var(--sunken);border-top:1px solid var(--line);padding:48px 0 110px;font-size:.93rem;color:var(--muted)}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:28px}
+footer h3{font-size:1rem;color:var(--ink);margin-bottom:8px}
+footer .preencher{border-bottom:1px dashed var(--accent)}
+footer .legal{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);font-size:.82rem}
+@media (max-width:820px){footer .cols{grid-template-columns:1fr}}
+
+.zap{position:fixed;right:16px;bottom:16px;z-index:30;box-shadow:0 14px 30px -12px rgba(0,40,50,.6)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Perolar Odontologia, início">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M7 38C6 20 19 7 32 7s26 13 25 31"/>
+        <path d="M32 40 13 24M32 40 21 12M32 40V7M32 40l11-28M32 40l19-16" opacity=".55"/>
+        <path d="M5 40q27 22 54 0q-27 9-54 0z" fill="var(--sunken)"/>
+        <path d="M25 27q3.5-3 7 0q3.5-3 7 0q2 6-1.5 14q-1.2 2-2-1q-.8-5-3.5-5t-3.5 5q-.8 3-2 1q-3.5-8-1.5-14z" fill="var(--surface)"/>
+      </svg>
+      <span>Perolar<small>Odontologia</small></span>
+    </a>
+    <nav aria-label="Seções">
+      <a href="#tratamentos">Tratamentos</a>
+      <a href="#plano">Plano Perolar</a>
+      <a href="#triagem">Qual consulta?</a>
+      <a href="#avaliacao">Avaliação</a>
+      <a href="#urgencia">Urgência</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <div class="a11y">
+      <button type="button" id="btnFonte" aria-pressed="false" title="Aumentar o texto">A+</button>
+    </div>
+    <a class="btn small" href="#agendar">Agendar avaliação</a>
+  </div>
+</header>
+
+<main id="inicio">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Clínica odontológica</p>
+      <h1>Cuidamos do seu bem mais precioso: seu sorriso.</h1>
+      <p class="lead">Na Perolar, tudo começa por uma avaliação sem pressa. Você escolhe o dia pelo celular, a clínica confirma pelo WhatsApp e você sai da primeira consulta com um plano de tratamento por escrito.</p>
+      <div class="acts">
+        <a class="btn" href="#agendar">Agendar avaliação</a>
+        <a class="btn ghost" href="#plano">Conhecer o Plano Perolar</a>
+      </div>
+    </div>
+    <div class="pearl-stage" aria-hidden="true">
+      <div class="ring"></div><div class="ring b"></div>
+      <div class="pearl"></div>
+      <div class="chip-float c">Agendamento online<span>em menos de 1 minuto</span></div>
+      <div class="chip-float a">Confirmação<span>pelo WhatsApp</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap">
+    <ul>
+      <li><b>Avaliação completa</b>Exame clínico e conversa sobre o que você espera do tratamento.</li>
+      <li><b>Plano por escrito</b>Etapas, prazos e alternativas explicados em linguagem simples.</li>
+      <li><b>Toda a família</b>Crianças, adultos e idosos atendidos no mesmo lugar.</li>
+      <li><b>Lembretes automáticos</b>Aviso da consulta e do retorno direto no seu WhatsApp.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="tratamentos">
+  <div class="wrap">
+    <p class="eyebrow">Tratamentos</p>
+    <h2>Do check-up ao sorriso novo</h2>
+    <p class="lead">Escolha um tratamento para já deixar o agendamento preenchido. Se tiver dúvida, a avaliação inicial indica o caminho.</p>
+    <div class="trats" id="listaTrats"></div>
+  </div>
+</section>
+
+<section id="plano" class="plano">
+  <div class="wrap">
+    <p class="eyebrow">Exclusivo da clínica</p>
+    <h2>Plano Odontológico Particular Perolar</h2>
+    <p class="lead">Um plano próprio da Perolar para manter o sorriso em dia o ano inteiro, com acompanhamento da mesma equipe e sem depender de convênio.</p>
+    <div class="beneficios">
+      <div><h3>Revisões programadas</h3><p>Consultas de acompanhamento já agendadas ao longo do ano, com lembrete no WhatsApp.</p></div>
+      <div><h3>Prevenção em dia</h3><p>Limpeza profissional e orientação de higiene nos intervalos indicados pelo dentista.</p></div>
+      <div><h3>Prioridade na agenda</h3><p>Encaixe mais rápido para urgências e retornos de quem é do plano.</p></div>
+      <div><h3>Condições exclusivas</h3><p>Vantagens para participantes nos tratamentos realizados na clínica.</p></div>
+    </div>
+    <ul class="publico" aria-label="Para quem é o plano">
+      <li>Individual</li><li>Família</li><li>Empresas</li>
+    </ul>
+    <div class="acts">
+      <button class="btn" type="button" data-agendar="plano">Quero conhecer o plano</button>
+      <p class="nota">Coberturas, regras e valores são apresentados pela equipe, de forma individual, no atendimento.</p>
+    </div>
+  </div>
+</section>
+
+<section id="triagem" class="band">
+  <div class="wrap duo">
+    <div>
+      <p class="eyebrow">Triagem em um toque</p>
+      <h2>Não sabe qual consulta marcar?</h2>
+      <p class="lead">Conte o que está acontecendo e mostramos o tipo de consulta mais indicado. Isto é uma orientação inicial e não substitui o exame feito pelo dentista.</p>
+      <div class="opts" id="triOpts" role="radiogroup" aria-label="O que traz você à clínica?"></div>
+    </div>
+    <div class="card" aria-live="polite">
+      <div class="resultado" id="triRes">
+        <h3>Consulta de avaliação</h3>
+        <p>Sem uma queixa específica, o melhor começo é a avaliação: exame clínico, conversa sobre hábitos e um plano de cuidados para os próximos meses.</p>
+        <button class="btn small" type="button" data-agendar="avaliacao">Agendar esta consulta</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cor">
+  <div class="wrap duo">
+    <div class="card">
+      <svg class="sorriso" viewBox="0 0 420 200" role="img" aria-label="Ilustração de um sorriso que muda de tom conforme a escala">
+        <defs><clipPath id="boca"><path d="M30 70 Q210 20 390 70 Q210 215 30 70Z"/></clipPath></defs>
+        <path d="M18 68 Q210 6 402 68 Q210 232 18 68Z" fill="#C4637A"/>
+        <g clip-path="url(#boca)">
+          <rect x="0" y="0" width="420" height="200" fill="#5B1F2E"/>
+          <g fill="var(--tooth)" stroke="rgba(90,60,40,.18)" stroke-width="1">
+            <rect x="46" y="38" width="40" height="62" rx="12"/><rect x="88" y="38" width="44" height="70" rx="13"/>
+            <rect x="134" y="38" width="48" height="78" rx="14"/><rect x="184" y="38" width="52" height="84" rx="15"/>
+            <rect x="238" y="38" width="48" height="78" rx="14"/><rect x="288" y="38" width="44" height="70" rx="13"/>
+            <rect x="334" y="38" width="40" height="62" rx="12"/>
+          </g>
+        </g>
+      </svg>
+      <label class="f" for="tom" style="margin-top:12px">Tom do sorriso: <span id="tomNome">A2</span></label>
+      <input type="range" id="tom" min="0" max="5" step="1" value="2" aria-describedby="tomNota">
+      <div class="escala" aria-hidden="true"><span>A3,5</span><span>A3</span><span>A2</span><span>A1</span><span>B1</span><span>BL</span></div>
+      <p class="nota" id="tomNota">Ilustração da escala de cores usada em clareamento. O resultado real varia de pessoa para pessoa e só é estimado na avaliação.</p>
+    </div>
+    <div>
+      <p class="eyebrow">Escala de cores</p>
+      <h2>Veja como os dentistas medem o tom do dente</h2>
+      <p class="lead">Antes de um clareamento, o dentista compara seus dentes com uma escala de cores e registra o ponto de partida. Arraste o controle para conhecer os tons, do A3,5 ao BL.</p>
+      <p class="lead">Na avaliação você descobre seu tom atual, se o clareamento é indicado e qual técnica combina com a sua sensibilidade.</p>
+      <div style="margin-top:22px"><button class="btn" type="button" data-agendar="clareamento">Avaliar clareamento</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacao" class="band">
+  <div class="wrap">
+    <p class="eyebrow">Como funciona</p>
+    <h2>Sua avaliação, passo a passo</h2>
+    <ol class="passos">
+      <li><h3>Você agenda</h3><p>Escolhe tratamento, dia e horário de preferência aqui no site.</p></li>
+      <li><h3>A clínica confirma</h3><p>Você recebe a confirmação e as orientações pelo WhatsApp.</p></li>
+      <li><h3>Exame e conversa</h3><p>O dentista examina, ouve suas expectativas e pede exames se precisar.</p></li>
+      <li><h3>Plano por escrito</h3><p>Você recebe as etapas do tratamento e decide com calma.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="agendar">
+  <div class="wrap">
+    <p class="eyebrow">Agendamento online</p>
+    <h2>Agende sua avaliação</h2>
+    <p class="lead">Preencha os três passos. No final, seu pedido vai pronto para o WhatsApp da clínica, que confirma o horário.</p>
+
+    <form class="agenda" id="formAgenda" novalidate>
+      <div>
+        <fieldset>
+          <legend><i>1</i>Qual consulta?</legend>
+          <div class="opts" id="agTrats"></div>
+        </fieldset>
+        <fieldset>
+          <legend><i>2</i>Dia e horário de preferência</legend>
+          <p class="hint">A clínica confirma a disponibilidade. Se o horário estiver ocupado, você recebe as opções mais próximas.</p>
+          <div class="dias" id="agDias"></div>
+          <div class="opts" id="agHoras" style="margin-top:6px"></div>
+        </fieldset>
+        <fieldset>
+          <legend><i>3</i>Seus dados</legend>
+          <div class="campos">
+            <label class="f" for="nome">Nome completo<input id="nome" name="nome" autocomplete="name" required></label>
+            <label class="f" for="tel">WhatsApp com DDD<input id="tel" name="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(11) 91234-5678" required></label>
+            <label class="f" for="primeira">É sua primeira vez na Perolar?
+              <select id="primeira" name="primeira"><option>Sim</option><option>Não, já sou paciente</option></select>
+            </label>
+            <label class="f" for="para">A consulta é para
+              <select id="para" name="para"><option>Mim</option><option>Uma criança</option><option>Outra pessoa adulta</option></select>
+            </label>
+            <label class="f full" for="obs">Algo que a equipe deva saber? (opcional)<textarea id="obs" name="obs" placeholder="Ex.: tenho medo de dentista, uso aparelho, prefiro ser atendido pela manhã"></textarea></label>
+          </div>
+          <label class="check" for="lgpd"><input type="checkbox" id="lgpd" required>
+            <span>Autorizo o uso destes dados somente para agendar e confirmar minha consulta, conforme a Lei Geral de Proteção de Dados (LGPD).</span></label>
+        </fieldset>
+      </div>
+
+      <aside class="card resumo" aria-live="polite">
+        <h3>Resumo do pedido</h3>
+        <dl>
+          <div><dt>Consulta</dt><dd id="rTrat">Avaliação e clínica geral</dd></div>
+          <div><dt>Preferência</dt><dd id="rQuando">Escolha dia e horário</dd></div>
+          <div><dt>Paciente</dt><dd id="rNome">Seu nome</dd></div>
+        </dl>
+        <button class="btn" type="submit">Gerar pedido de agendamento</button>
+        <p class="erro" id="agErro" hidden></p>
+        <div class="pronto" id="agPronto" hidden>
+          <p class="okmsg">Pedido pronto.</p>
+          <p id="agComo"></p>
+          <button class="btn" type="button" id="agCopiar">Copiar pedido</button>
+          <a class="btn ghost" id="agZap" href="#" target="_blank" rel="noopener">Abrir WhatsApp da Perolar</a>
+        </div>
+      </aside>
+    </form>
+  </div>
+</section>
+
+<section id="tecnologia" class="band">
+  <div class="wrap">
+    <p class="eyebrow">Tecnologia a seu favor</p>
+    <h2>Menos cadeira, mais previsibilidade</h2>
+    <div class="tec">
+      <div><h3>Escaneamento digital</h3><p>Um scanner registra seus dentes em 3D. Sem massa de moldagem e sem aquele desconforto na garganta.</p></div>
+      <div><h3>Planejamento do sorriso</h3><p>Você vê a simulação do resultado planejado na tela e opina antes de qualquer procedimento.</p></div>
+      <div><h3>Prontuário e retornos digitais</h3><p>Radiografias, plano de tratamento e datas de retorno ficam organizados e chegam a você pelo celular.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="urgencia">
+  <div class="wrap duo">
+    <div>
+      <p class="eyebrow">Urgência</p>
+      <h2>Aconteceu agora? Veja o que fazer</h2>
+      <p class="lead">Estes cuidados ajudam até você chegar ao dentista. Avise a clínica pelo WhatsApp que é urgência para ter prioridade.</p>
+      <p class="alerta">Inchaço no rosto ou no pescoço, febre, dificuldade para engolir ou respirar, ou sangramento que não para: vá a um pronto-socorro imediatamente.</p>
+      <button class="btn" type="button" data-agendar="urgencia">Pedir atendimento de urgência</button>
+    </div>
+    <div class="card">
+      <details open><summary>O dente saiu inteiro depois de uma pancada</summary>
+        <ol><li>Segure o dente pela coroa (a parte branca). Não toque nem esfregue a raiz.</li><li>Se estiver sujo, enxágue rápido com soro ou leite.</li><li>Adultos: tente recolocar no lugar e morda uma gaze. Se não der, guarde em um copo com leite ou soro fisiológico.</li><li>Procure o dentista em até 1 hora. Dente de leite não deve ser recolocado.</li></ol></details>
+      <details><summary>Quebrei um pedaço do dente</summary>
+        <p>Guarde o fragmento em leite ou soro, enxágue a boca com água e evite mastigar daquele lado. Em muitos casos o pedaço pode ser colado de volta.</p></details>
+      <details><summary>Dor de dente forte</summary>
+        <p>Passe fio dental com cuidado e enxágue com água morna. Faça compressa fria por fora do rosto. Não coloque remédio, álcool ou qualquer produto direto no dente ou na gengiva, e agende o atendimento o quanto antes.</p></details>
+      <details><summary>Sangramento depois de uma extração</summary>
+        <p>Morda uma gaze limpa dobrada sobre o local por 20 a 30 minutos, sem cuspir nem bochechar. Se continuar sangrando depois disso, fale com a clínica.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="duvidas" class="band">
+  <div class="wrap duo">
+    <div>
+      <p class="eyebrow">Dúvidas frequentes</p>
+      <h2>Antes de marcar</h2>
+      <p class="lead">Não achou sua pergunta? Mande pelo WhatsApp que a equipe responde.</p>
+    </div>
+    <div>
+      <details><summary>Quanto custa o tratamento?</summary><p>Cada boca pede um cuidado diferente, então o valor só pode ser informado depois da avaliação. Você recebe o orçamento por escrito, com todas as etapas, antes de decidir.</p></details>
+      <details><summary>Tenho medo de dentista. E agora?</summary><p>Conte isso no campo de observações. A equipe reserva mais tempo, explica cada passo antes de fazer e combina um sinal para você pedir pausa quando quiser.</p></details>
+      <details><summary>Vocês atendem crianças?</summary><p>Sim. A primeira visita ao dentista é recomendada quando nasce o primeiro dentinho. A consulta infantil é mais curta e lúdica, para a criança se acostumar ao consultório.</p></details>
+      <details><summary>Atendem pelo meu convênio?</summary><p>Informe o nome do seu plano nas observações do agendamento e a clínica responde se há cobertura para o seu caso.</p></details>
+      <details><summary>De quanto em quanto tempo devo voltar?</summary><p>Para a maioria das pessoas, a cada seis meses. Quem usa aparelho, tem implantes ou trata a gengiva pode precisar de intervalos menores, definidos pelo dentista.</p></details>
+      <details><summary>Como remarco ou cancelo?</summary><p>Responda a mensagem de confirmação no WhatsApp com pelo menos 24 horas de antecedência. Assim o horário pode ser oferecido a outro paciente.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h3>Perolar Odontologia</h3>
+        <p><span class="preencher">Endereço da clínica, número, bairro, cidade e UF</span></p>
+        <p style="margin-top:8px">Responsável técnico: <span class="preencher">nome do cirurgião-dentista, CRO-UF e número</span></p>
+      </div>
+      <div>
+        <h3>Atendimento</h3>
+        <p><span class="preencher">Segunda a sexta, 8h às 18h</span><br><span class="preencher">Sábado, 8h às 12h</span></p>
+      </div>
+      <div>
+        <h3>Contato</h3>
+        <p><a href="https://wa.me/message/M6XR4OLF3ASQB1" target="_blank" rel="noopener">WhatsApp da clínica</a><br><a href="https://www.instagram.com/perolarodontologia/" target="_blank" rel="noopener">Instagram @perolarodontologia</a></p>
+      </div>
+    </div>
+    <p class="legal">Os dados enviados pelo site são usados apenas para agendamento e contato sobre a consulta, conforme a LGPD. As informações desta página são educativas e não substituem a consulta com o cirurgião-dentista.</p>
+  </div>
+</footer>
+
+<a class="btn zap" href="#agendar">Agendar</a>
+
+<script>
+/* ====== DADOS DA CLÍNICA: edite aqui ====== */
+const CLINICA = {
+  nome: "Perolar Odontologia",
+  whatsapp: "",            // só números com DDI, ex.: 5511912345678. Com o número, o pedido já chega escrito na conversa.
+  whatsappLink: "https://wa.me/message/M6XR4OLF3ASQB1", // link do Instagram da clínica, usado enquanto não houver número
+  horas: { semana: ["08:00","09:00","10:00","11:00","13:00","14:00","15:00","16:00","17:00"], sabado: ["08:00","09:00","10:00","11:00"] },
+  diasNaAgenda: 12         // domingos ficam de fora
+};
+const TRATS = [
+  {id:"avaliacao",   nome:"Avaliação e clínica geral", txt:"Check-up, limpeza profissional, restaurações e orientação de higiene para toda a família."},
+  {id:"clareamento", nome:"Clareamento dental",    txt:"Feito no consultório ou em casa com moldeiras, sempre com acompanhamento da sensibilidade."},
+  {id:"estetica",    nome:"Facetas e lentes",      txt:"Correção de forma, cor e pequenos espaços com resina ou porcelana, planejada com você."},
+  {id:"implantes",   nome:"Implantes",             txt:"Reposição de dentes perdidos com planejamento por imagem e prótese sobre o implante."},
+  {id:"orto",        nome:"Aparelhos e alinhadores", txt:"Do aparelho fixo aos alinhadores transparentes, para alinhar os dentes e corrigir a mordida."},
+  {id:"infantil",    nome:"Odontopediatria",       txt:"Consultas pensadas para crianças, da primeira dentição à troca dos dentes."},
+  {id:"gengiva",     nome:"Gengivoplastia e gengiva", txt:"Remodelação do contorno da gengiva e tratamento de sangramento e retração."},
+  {id:"hof",         nome:"Harmonização orofacial", txt:"Toxina botulínica, preenchimento labial e lipo de papada, indicados após avaliação individual."},
+  {id:"canal",       nome:"Tratamento de canal",   txt:"Trata a parte interna do dente para acabar com a dor e evitar a extração."},
+  {id:"proteses",    nome:"Próteses",              txt:"Coroas, pontes e dentaduras para devolver mastigação, fala e conforto."},
+  {id:"urgencia",    nome:"Urgência",              txt:"Dor, trauma, dente quebrado ou restauração que caiu. Atendimento com prioridade."},
+  {id:"plano",       nome:"Conhecer o Plano Perolar", soAgenda:true}
+];
+const TRIAGEM = [
+  {q:"Faz tempo que não vou ao dentista", t:"avaliacao", h:"Consulta de avaliação", p:"O melhor recomeço é um check-up completo, com limpeza se for indicada e um plano de cuidados sem julgamento."},
+  {q:"Estou com dor ou inchaço", t:"urgencia", h:"Atendimento de urgência", p:"Dor é sinal de que algo precisa de atenção logo. Peça o primeiro horário disponível e avise que é urgência.", a:"Inchaço no rosto, febre ou dificuldade para engolir: procure um pronto-socorro agora."},
+  {q:"Quebrei ou perdi um dente", t:"urgencia", h:"Atendimento de urgência", p:"Guarde o dente ou o fragmento em leite ou soro e procure atendimento o mais rápido possível. Veja os cuidados na seção Urgência."},
+  {q:"Quero dentes mais brancos", t:"clareamento", h:"Avaliação para clareamento", p:"O dentista mede o tom atual, verifica restaurações e sensibilidade e indica a técnica mais adequada para você."},
+  {q:"Meus dentes são tortos", t:"orto", h:"Avaliação ortodôntica", p:"Com exame e imagens, o ortodontista mostra as opções de aparelho ou alinhadores e o tempo estimado de tratamento."},
+  {q:"Falta um dente", t:"implantes", h:"Avaliação para implante ou prótese", p:"A consulta define se o caso pede implante, ponte ou prótese removível, e quais exames são necessários."},
+  {q:"Minha gengiva sangra", t:"gengiva", h:"Avaliação da gengiva", p:"Sangramento ao escovar não é normal e costuma ter tratamento simples quando visto cedo."},
+  {q:"É para uma criança", t:"infantil", h:"Consulta infantil", p:"Uma consulta curta e leve, para examinar, orientar a família e fazer a criança gostar de cuidar dos dentes."}
+];
+const TONS = [["A3,5","#E6D39C"],["A3","#EBDBAC"],["A2","#F2E6C6"],["A1","#F6EED9"],["B1","#FAF6EA"],["BL","#FDFCF7"]];
+
+const $ = (s, r=document) => r.querySelector(s);
+const el = (tag, attrs={}, html="") => { const e=document.createElement(tag); for(const k in attrs) e.setAttribute(k, attrs[k]); e.innerHTML=html; return e; };
+const estado = { trat:"avaliacao", dia:null, hora:null };
+const nomeTrat = id => (TRATS.find(t=>t.id===id)||TRATS[0]).nome;
+
+/* tratamentos */
+const lista = $("#listaTrats");
+TRATS.filter(t=>!t.soAgenda).forEach(t => lista.append(el("article",{class:"trat"},`<h3>${t.nome}</h3><p>${t.txt}</p><button type="button" data-agendar="${t.id}">Agendar ${t.id==="urgencia"?"urgência":"avaliação"}</button>`)));
+
+/* chips de consulta no agendamento */
+const agTrats = $("#agTrats");
+TRATS.forEach(t => agTrats.append(el("label",{class:"chip"},`<input type="radio" name="trat" value="${t.id}" id="t-${t.id}" ${t.id===estado.trat?"checked":""}><span>${t.nome}</span>`)));
+agTrats.addEventListener("change", e => { estado.trat = e.target.value; resumo(); });
+
+/* dias e horários */
+const agDias = $("#agDias"), agHoras = $("#agHoras");
+const dias = [];
+(function(){ const d=new Date(); d.setHours(12,0,0,0);
+  while(dias.length < CLINICA.diasNaAgenda){ d.setDate(d.getDate()+1); if(d.getDay()!==0) dias.push(new Date(d)); } })();
+const fmtSem = d => d.toLocaleDateString("pt-BR",{weekday:"short"}).replace(".","");
+const fmtMes = d => d.toLocaleDateString("pt-BR",{month:"short"}).replace(".","");
+const fmtLongo = d => d.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit"});
+dias.forEach((d,i) => agDias.append(el("label",{class:"chip dia"},`<input type="radio" name="dia" value="${i}" id="d-${i}"><span><small>${fmtSem(d)}</small><b>${d.getDate()}</b><small>${fmtMes(d)}</small></span>`)));
+function pintaHoras(){
+  agHoras.innerHTML="";
+  if(estado.dia===null){ agHoras.append(el("p",{class:"hint"},"Escolha um dia para ver os horários.")); return; }
+  const hs = dias[estado.dia].getDay()===6 ? CLINICA.horas.sabado : CLINICA.horas.semana;
+  if(!hs.includes(estado.hora)) estado.hora=null;
+  hs.forEach(h => agHoras.append(el("label",{class:"chip"},`<input type="radio" name="hora" value="${h}" id="h-${h.replace(":","")}" ${h===estado.hora?"checked":""}><span>${h}</span>`)));
+}
+agDias.addEventListener("change", e => { estado.dia = +e.target.value; pintaHoras(); resumo(); });
+agHoras.addEventListener("change", e => { estado.hora = e.target.value; resumo(); });
+pintaHoras();
+
+/* resumo */
+const nome=$("#nome"), tel=$("#tel");
+function quando(){
+  if(estado.dia===null) return "Escolha dia e horário";
+  return fmtLongo(dias[estado.dia]) + (estado.hora ? " às "+estado.hora : " (escolha o horário)");
+}
+function resumo(){
+  $("#rTrat").textContent = nomeTrat(estado.trat);
+  $("#rQuando").textContent = quando();
+  $("#rNome").textContent = nome.value.trim() || "Seu nome";
+  $("#agPronto").hidden = true;
+}
+nome.addEventListener("input", resumo);
+tel.addEventListener("input", () => {
+  const n = tel.value.replace(/\D/g,"").slice(0,11);
+  let v = n;
+  if(n.length>2) v = "("+n.slice(0,2)+") "+n.slice(2);
+  if(n.length>6) v = "("+n.slice(0,2)+") "+n.slice(2,n.length-4)+"-"+n.slice(-4);
+  tel.value = v; $("#agPronto").hidden = true;
+});
+
+/* envio */
+let mensagem = "";
+$("#formAgenda").addEventListener("submit", e => {
+  e.preventDefault();
+  const erro = $("#agErro"), faltas = [];
+  if(estado.dia===null) faltas.push("o dia");
+  if(!estado.hora) faltas.push("o horário");
+  if(nome.value.trim().length<3) faltas.push("seu nome");
+  if(tel.value.replace(/\D/g,"").length<10) faltas.push("seu WhatsApp com DDD");
+  if(!$("#lgpd").checked) faltas.push("a autorização de uso dos dados");
+  if(faltas.length){ erro.textContent = "Falta informar: " + faltas.join(", ") + "."; erro.hidden=false; $("#agPronto").hidden=true; return; }
+  erro.hidden = true;
+  const obs = $("#obs").value.trim();
+  mensagem = [
+    "Olá! Quero agendar na "+CLINICA.nome+".",
+    "Consulta: "+nomeTrat(estado.trat),
+    "Preferência: "+quando(),
+    "Nome: "+nome.value.trim(),
+    "WhatsApp: "+tel.value,
+    "Primeira vez: "+$("#primeira").value,
+    "Consulta para: "+$("#para").value,
+    obs ? "Observações: "+obs : ""
+  ].filter(Boolean).join("\n");
+  $("#agZap").href = CLINICA.whatsapp ? "https://wa.me/"+CLINICA.whatsapp+"?text="+encodeURIComponent(mensagem) : CLINICA.whatsappLink;
+  $("#agComo").textContent = CLINICA.whatsapp ? "Falta só enviar para a clínica. O horário vale depois da confirmação." : "Copie o pedido, abra o WhatsApp da Perolar e cole na conversa. O horário vale depois da confirmação.";
+  $("#agPronto").hidden = false;
+  $("#agCopiar").textContent = "Copiar pedido";
+});
+$("#agCopiar").addEventListener("click", async e => {
+  try{ await navigator.clipboard.writeText(mensagem); e.target.textContent = "Pedido copiado"; }
+  catch(_){ e.target.textContent = "Não foi possível copiar"; }
+});
+
+/* botões "agendar" espalhados pela página */
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-agendar]"); if(!b) return;
+  estado.trat = b.dataset.agendar;
+  const r = $("#t-"+estado.trat); if(r) r.checked = true;
+  resumo();
+  $("#agendar").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+});
+
+/* triagem */
+const triOpts = $("#triOpts"), triRes = $("#triRes");
+TRIAGEM.forEach((o,i) => triOpts.append(el("label",{class:"chip"},`<input type="radio" name="tri" value="${i}" id="tri-${i}"><span>${o.q}</span>`)));
+triOpts.addEventListener("change", e => {
+  const o = TRIAGEM[+e.target.value];
+  triRes.innerHTML = `<h3>${o.h}</h3><p>${o.p}</p>${o.a?`<p class="alerta">${o.a}</p>`:""}<button class="btn small" type="button" data-agendar="${o.t}">Agendar esta consulta</button>`;
+});
+
+/* escala de cor */
+const tom = $("#tom");
+function pintaTom(){ const [n,c] = TONS[+tom.value]; document.documentElement.style.setProperty("--tooth", c); $("#tomNome").textContent = n; }
+tom.addEventListener("input", pintaTom); pintaTom();
+
+/* texto maior */
+const btnFonte = $("#btnFonte");
+btnFonte.addEventListener("click", () => {
+  const on = document.documentElement.classList.toggle("grande");
+  btnFonte.setAttribute("aria-pressed", on);
+  try{ localStorage.setItem("perolar-fonte", on ? "1" : "0"); }catch(_){}
+});
+try{ if(localStorage.getItem("perolar-fonte")==="1"){ document.documentElement.classList.add("grande"); btnFonte.setAttribute("aria-pressed","true"); } }catch(_){}
+</script>
+</body>
+</html>
