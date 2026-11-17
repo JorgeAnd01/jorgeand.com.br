@@ -215,135 +215,8 @@ h2 {
 .btn.stop:hover:not(:disabled) { background: var(--ember); color: var(--night); border-color: var(--ember); }
 .btn[aria-pressed="true"] { background: var(--neon); border-color: var(--neon); color: var(--night); }
 
-/* The shift (mini game) */
-.desk {
-  background: var(--scrim-solid);
-  border: 1px solid var(--rule);
-  border-radius: 3px;
-  padding: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-  min-width: 0;
-}
-.desk-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.4rem 1rem;
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--paper-dim);
-}
-.pips { display: flex; gap: 0.3rem; align-items: center; }
-.pip { width: 0.7rem; height: 0.7rem; border: 1px solid var(--paper-dim); border-radius: 50%; }
-.pip.right { background: var(--teal); border-color: var(--teal); }
-.pip.wrong { background: var(--ember); border-color: var(--ember); }
-.app-name {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.7rem;
-  line-height: 1.05;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  margin: 0;
-}
-.app-kind { font-family: var(--mono); font-size: 0.8rem; color: var(--paper-dim); margin: 0; }
-.checks {
-  margin: 0;
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 0.45rem 1.1rem;
-  font-family: var(--mono);
-  font-size: 0.86rem;
-  line-height: 1.45;
-  padding-block: 0.8rem;
-  border-block: 1px dashed var(--rule);
-}
-.checks dt { color: var(--paper-dim); }
-.checks dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
-.desk-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-.verdict { font-family: var(--mono); font-size: 0.84rem; line-height: 1.5; min-height: 2.6em; margin: 0; }
-.verdict.right { color: var(--teal); }
-.verdict.wrong { color: var(--ember); }
-.debrief { display: flex; flex-direction: column; gap: 0.8rem; }
-.score {
-  font-family: var(--display);
-  font-weight: 900;
-  font-size: clamp(2.2rem, 8vw, 3.4rem);
-  line-height: 1;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin: 0;
-}
-
-/* The crew (agents run the same queue) */
-.crew { display: flex; flex-direction: column; gap: 0.9rem; min-width: 0; }
-.log {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  line-height: 1.5;
-  max-height: 17rem;
-  overflow: auto;
-  border-block: 1px dashed var(--rule);
-  padding-block: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-.row { display: grid; grid-template-columns: 3.8rem 8rem 1fr auto; gap: 0.6rem; }
-.row > * { min-width: 0; overflow-wrap: anywhere; }
-.row.gap { margin-top: 0.55rem; }
-.row .tag { color: var(--paper-dim); letter-spacing: 0.08em; }
-.row.mcp .tag { color: var(--neon); }
-.row.brief { color: var(--teal); }
-.row.brief.back { color: var(--ember); }
-.row .st.ok { color: var(--teal); }
-.row .st.bad { color: var(--ember); }
-@media (max-width: 30rem) {
-  .row { grid-template-columns: 3.4rem 1fr; gap: 0 0.6rem; }
-  .row > :nth-child(n+3) { grid-column: 2; }
-}
-
-/* Build the crew */
-.crew-ask { margin: 0; }
-.roster { display: grid; grid-template-columns: repeat(auto-fit, minmax(11.5rem, 1fr)); gap: 0.5rem; }
-.piece {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  text-align: left;
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  line-height: 1.4;
-  color: var(--paper-dim);
-  background: transparent;
-  border: 1px dashed var(--rule);
-  border-radius: 3px;
-  padding: 0.6rem 0.7rem;
-  cursor: pointer;
-}
-.piece b {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--paper-dim);
-}
-.piece:hover { border-color: var(--paper-dim); }
-.piece[aria-pressed="true"] { border: 1px solid var(--teal); color: var(--paper); background: color-mix(in srgb, var(--teal) 10%, transparent); }
-.piece[aria-pressed="true"] b { color: var(--teal); }
-.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; }
-.node { border: 1px dashed var(--rule); border-radius: 3px; padding: 0.3rem 0.5rem; color: var(--paper-dim); opacity: 0.55; }
-.node.on { border: 1px solid var(--neon); color: var(--paper); opacity: 1; }
-.arrow { color: var(--paper-dim); }
-.row.hand .tag { color: var(--ember); }
-.row.human .tag { color: var(--teal); }
-.outcome { display: flex; flex-direction: column; gap: 0.8rem; }
-.outcome p { margin: 0; }
+/* Signal City (the game) */
+#signalCity { margin: 0.4rem 0; border: 1px solid var(--rule); }
 
 /* Straight answers */
 .asks { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -557,61 +430,10 @@ h2 {
 
   <section class="panel city" id="shift">
     <p class="chapter-mark">Side job · Work a shift</p>
-    <h2>Do my job for one minute</h2>
-    <p>Six apps want to go live on payment terminals. This is a simplified version of the review I do. Approve an app only if all four checks pass. Otherwise send it back. Then build an AI crew to do it for you.</p>
-    <div class="desk" id="desk">
-      <div class="desk-top">
-        <span id="deskCount">Submission 1 of 6</span>
-        <span class="pips" id="pips" aria-hidden="true"></span>
-      </div>
-      <div id="deskCard">
-        <h3 class="app-name" id="appName">Padoca do Xerife</h3>
-        <p class="app-kind" id="appKind">Bakery point of sale</p>
-      </div>
-      <dl class="checks" id="checks">
-        <dt>Manifest</dt><dd>extractNativeLibs="true"</dd>
-        <dt>Malware scan</dt><dd>Clean</dd>
-        <dt>Payments</dt><dd>Sale and refund tested</dd>
-        <dt>Language</dt><dd>Portuguese (Brazil)</dd>
-      </dl>
-      <div class="desk-actions" id="deskActions">
-        <button type="button" class="btn go" id="btnApprove">Approve</button>
-        <button type="button" class="btn stop" id="btnReject">Send back</button>
-        <button type="button" class="btn" id="btnCrew2">Skip to building the crew</button>
-      </div>
-      <p class="verdict" id="verdict" aria-live="polite">Read the four lines, then decide.</p>
-      <div class="debrief" id="debrief" hidden>
-        <p class="score" id="score"></p>
-        <p id="debriefText"></p>
-        <p>Real tickets carry far more than four lines, and they arrive every day. My agents read all of them first and hand a person a short brief. The button stays human.</p>
-        <div class="desk-actions"><button type="button" class="btn go" id="btnCrew">Now build the crew</button><button type="button" class="btn" id="btnAgain">Work another shift</button></div>
-      </div>
-      <div class="crew" id="crew" hidden>
-        <p class="crew-ask">Pick who is on the crew. Then run the same six apps through it.</p>
-        <div class="roster" id="roster">
-          <button type="button" class="piece" data-k="mcp" aria-pressed="false"><b>MCP server</b><span>Reads the ticket, writes the brief back</span></button>
-          <button type="button" class="piece" data-k="manifest" aria-pressed="true"><b>Manifest agent</b><span>Checks the build settings</span></button>
-          <button type="button" class="piece" data-k="malware" aria-pressed="false"><b>Malware agent</b><span>Runs the scan</span></button>
-          <button type="button" class="piece" data-k="pay" aria-pressed="false"><b>Payments agent</b><span>Tests sale and refund</span></button>
-          <button type="button" class="piece" data-k="lang" aria-pressed="false"><b>Language agent</b><span>Checks Brazilian Portuguese</span></button>
-          <button type="button" class="piece" data-k="boss" aria-pressed="false"><b>Manager agent</b><span>Turns findings into one brief</span></button>
-          <button type="button" class="piece" data-k="human" aria-pressed="true"><b>Human sign-off</b><span>Makes the final call</span></button>
-        </div>
-        <div class="flow" id="flow" aria-hidden="true"></div>
-        <div class="desk-actions">
-          <button type="button" class="btn go" id="btnRun">Run the queue</button>
-          <button type="button" class="btn" id="btnFull">Hire the full crew</button>
-          <button type="button" class="btn" id="btnManual">Back to doing it by hand</button>
-        </div>
-        <div class="log" id="crewLog" hidden></div>
-        <div class="outcome" id="outcome" hidden>
-          <p class="score" id="crewScore"></p>
-          <dl class="checks" id="crewStats"></dl>
-          <p id="crewNote" aria-live="polite"></p>
-        </div>
-        <p class="fine">Simulated run with invented apps. It shows how the pieces fit: the MCP server reads the ticket, the agents check it, a person signs.</p>
-      </div>
-    </div>
+    <h2>Work a night shift in Signal City</h2>
+    <p>The five case files above, as five jobs in an open city. Take the call, pick up the build, get it checked and deliver before the clock runs out. Bump the traffic and the bugs come after you.</p>
+    <div id="signalCity"></div>
+    <p class="fine">Click the game to drive. Press Esc to give the keyboard back to the page.</p>
   </section>
 
   <section class="panel city" id="ask">
@@ -642,7 +464,7 @@ h2 {
   <footer class="call panel" id="call">
     <h2>Keep the file open. <span>Or call me in.</span></h2>
     <p class="lede">Reply to the email that brought you here. I answer fast.</p>
-    <p class="fine">A personal page made by Jorge Andrade Rodrigues. It is not affiliated with or endorsed by Rockstar Games. Red Dead Redemption and Grand Theft Auto are trademarks of their respective owners and are mentioned here only as a fan. The apps in the review game are invented examples.</p>
+    <p class="fine">A personal page made by Jorge Andrade Rodrigues. It is not affiliated with or endorsed by Rockstar Games. Red Dead Redemption and Grand Theft Auto are trademarks of their respective owners and are mentioned here only as a fan. Signal City and everything in it are invented.</p>
   </footer>
 </main>
 
@@ -874,194 +696,7 @@ h2 {
     railButtons.forEach(function (b, i) { b.setAttribute('aria-current', i === current ? 'true' : 'false'); });
   }
 
-  /* ---------- Work a shift ---------- */
-  var LABELS = ['Manifest', 'Malware scan', 'Payments', 'Language'];
-  var PASS = ['extractNativeLibs="true"', 'Clean', 'Sale and refund tested', 'Portuguese (Brazil)'];
-  var FAIL = ['extractNativeLibs="false"', '2 engines flagged it', 'Sale tested, refund missing', 'English only'];
-  var WHY = [
-    'the manifest has extractNativeLibs set to false',
-    'the malware scan flagged it',
-    'the refund flow was never tested',
-    'the app is not in Brazilian Portuguese'
-  ];
-  var APPS = [
-    { name: 'Padoca do Xerife', kind: 'Bakery point of sale', bad: -1 },
-    { name: 'Saloon do Zé', kind: 'Bar tabs and split bills', bad: 0 },
-    { name: 'Mercadinho Faroeste', kind: 'Grocery checkout', bad: -1 },
-    { name: 'Navalha de Ouro', kind: 'Appointments and payments', bad: 2 },
-    { name: 'Rancho Pet', kind: 'Pet shop sales', bad: 1 },
-    { name: 'Neon Açaí', kind: 'Counter orders', bad: 3 }
-  ];
   var el = function (id) { return document.getElementById(id); };
-  var idx = 0, right = 0, results = [], busy = false;
-
-  function renderPips() {
-    var html = '';
-    for (var i = 0; i < APPS.length; i++) html += '<span class="pip' + (results[i] === true ? ' right' : results[i] === false ? ' wrong' : '') + '"></span>';
-    el('pips').innerHTML = html;
-  }
-  function renderApp() {
-    var a = APPS[idx];
-    el('deskCount').textContent = 'Submission ' + (idx + 1) + ' of ' + APPS.length;
-    el('appName').textContent = a.name;
-    el('appKind').textContent = a.kind;
-    var dl = el('checks');
-    dl.textContent = '';
-    for (var i = 0; i < LABELS.length; i++) {
-      var dt = document.createElement('dt'); dt.textContent = LABELS[i];
-      var dd = document.createElement('dd'); dd.textContent = a.bad === i ? FAIL[i] : PASS[i];
-      dl.appendChild(dt); dl.appendChild(dd);
-    }
-    renderPips();
-  }
-  function setButtons(disabled) { el('btnApprove').disabled = disabled; el('btnReject').disabled = disabled; el('btnCrew2').disabled = disabled; }
-  function decide(approve) {
-    if (busy) return;
-    busy = true; setButtons(true);
-    var a = APPS[idx];
-    var shouldApprove = a.bad === -1;
-    var ok = approve === shouldApprove;
-    results[idx] = ok; if (ok) right++;
-    var v = el('verdict');
-    v.className = 'verdict ' + (ok ? 'right' : 'wrong');
-    if (shouldApprove) v.textContent = ok ? 'Right. All four checks pass, so it goes live.' : 'That one was fine. All four checks pass, and now a shop waits another week.';
-    else v.textContent = (ok ? 'Right. It goes back because ' : 'Missed it. It should go back because ') + WHY[a.bad] + '.';
-    renderPips();
-    setTimeout(function () {
-      idx++;
-      if (idx < APPS.length) {
-        renderApp();
-        v.className = 'verdict'; v.textContent = 'Read the four lines, then decide.';
-        busy = false; setButtons(false);
-      } else finish();
-    }, reduce ? 1400 : 1700);
-  }
-  function finish() {
-    el('deskCard').hidden = true; el('checks').hidden = true; el('deskActions').hidden = true; el('verdict').hidden = true;
-    manualMs = performance.now() - (shiftStart || performance.now());
-    el('deskCount').textContent = 'Shift over';
-    el('score').textContent = right + ' of ' + APPS.length + ' right';
-    el('debriefText').textContent = right === APPS.length
-      ? 'A clean shift. Now do it again tomorrow, and the day after, without getting tired.'
-      : 'One slip is all it takes for a bad build to reach a shop counter, or for a good one to wait another week.';
-    el('debrief').hidden = false;
-    el('btnAgain').focus();
-  }
-  function restart() {
-    idx = 0; right = 0; results = []; busy = false;
-    shiftStart = performance.now();
-    el('deskCard').hidden = false; el('checks').hidden = false; el('deskActions').hidden = false;
-    var v = el('verdict'); v.hidden = false; v.className = 'verdict'; v.textContent = 'Read the four lines, then decide.';
-    el('debrief').hidden = true;
-    setButtons(false);
-    renderApp();
-  }
-  el('btnApprove').addEventListener('click', function () { decide(true); });
-  el('btnReject').addEventListener('click', function () { decide(false); });
-  el('btnAgain').addEventListener('click', restart);
-
-  /* ---------- The crew: build an AI pipeline and run the queue ---------- */
-  var shiftStart = 0, manualMs = 0, crewRun = 0;
-  var AGENTS = ['manifest', 'malware', 'pay', 'lang'];
-  var crew = { mcp: false, manifest: true, malware: false, pay: false, lang: false, boss: false, human: true };
-  el('desk').addEventListener('pointerenter', function () { if (!shiftStart) shiftStart = performance.now(); });
-  function span(cls, text) { var s = document.createElement('span'); if (cls) s.className = cls; s.textContent = text; return s; }
-  function row(cls, parts) {
-    var r = document.createElement('div');
-    r.className = 'row ' + cls;
-    parts.forEach(function (p) { r.appendChild(span(p[0], p[1])); });
-    return r;
-  }
-  function agentCount() { return AGENTS.filter(function (k) { return crew[k]; }).length; }
-  function drawCrew() {
-    Array.prototype.forEach.call(document.querySelectorAll('#roster .piece'), function (b) {
-      b.setAttribute('aria-pressed', crew[b.getAttribute('data-k')] ? 'true' : 'false');
-    });
-    var flow = el('flow'), n = agentCount();
-    var nodes = [['Ticket', true], ['MCP', crew.mcp], ['Agents ' + n + '/4', n > 0], ['Manager', crew.boss], ['Human', crew.human], ['Live', true]];
-    flow.textContent = '';
-    nodes.forEach(function (nd, i) {
-      if (i) flow.appendChild(span('arrow', '→'));
-      flow.appendChild(span('node' + (nd[1] ? ' on' : ''), nd[0]));
-    });
-  }
-  function openCrew() {
-    crewRun++;
-    busy = true;
-    ['deskCard', 'checks', 'deskActions', 'verdict', 'debrief'].forEach(function (k) { el(k).hidden = true; });
-    el('crew').hidden = false;
-    el('crewLog').hidden = true;
-    el('outcome').hidden = true;
-    el('deskCount').textContent = 'Build the crew';
-    results = []; renderPips();
-    drawCrew();
-  }
-  function runCrew() {
-    var id = ++crewRun, log = el('crewLog'), rows = [], out = [], bad = 0, n = agentCount(), i = 0;
-    APPS.forEach(function (a, k) {
-      rows.push(row((crew.mcp ? 'mcp' : 'hand') + (k ? ' gap' : ''), [['tag', crew.mcp ? 'MCP' : 'HAND'], ['', a.name], ['', crew.mcp ? 'ticket opened' : 'ticket copied by hand']]));
-      AGENTS.forEach(function (key, j) {
-        if (crew[key]) rows.push(row('agent', [['tag', 'AGENT'], ['', LABELS[j]], ['', a.bad === j ? FAIL[j] : PASS[j]], [a.bad === j ? 'st bad' : 'st ok', a.bad === j ? 'FAIL' : 'ok']]));
-      });
-      var caught = a.bad !== -1 && crew[AGENTS[a.bad]];
-      var missed = a.bad !== -1 && !caught;
-      if (missed) bad++;
-      out.push(!missed);
-      if (crew.boss) rows.push(row('brief' + (caught ? ' back' : ''), [['tag', 'BRIEF'], ['', caught ? 'Send back' : 'Approve'], ['', caught ? WHY[a.bad] : (n ? 'Nothing flagged.' : 'Nothing was checked.')]]));
-      rows.push(row(crew.human ? 'human' : 'hand', [['tag', crew.human ? 'HUMAN' : 'AUTO'], ['', caught ? 'Send back' : 'Approve'], ['', crew.human ? 'signed' : 'applied with no signature'], [missed ? 'st bad' : 'st ok', missed ? 'BAD BUILD LIVE' : 'ok']]));
-    });
-    results = []; renderPips();
-    log.textContent = '';
-    log.hidden = false;
-    el('outcome').hidden = true;
-    el('deskCount').textContent = 'Crew on the queue';
-    function done() {
-      var full = crew.mcp && n === 4 && crew.boss && crew.human;
-      results = out; renderPips();
-      el('deskCount').textContent = 'Queue done';
-      el('crewScore').textContent = full ? 'Clean run' : bad ? (bad === 1 ? '1 bad build live' : bad + ' bad builds live') : !crew.human ? 'No signature' : 'Works, with friction';
-      var stats = [
-        ['Bad builds live', String(bad)],
-        ['Copied by hand', crew.mcp ? '0' : '12'],
-        ['Read by a person', !crew.human ? '0' : crew.boss ? '6 briefs' : (6 * n) + ' findings'],
-        ['Signed by a person', crew.human ? '6 of 6' : 'none']
-      ];
-      if (manualMs) stats.push(['Your time by hand', (manualMs / 1000).toFixed(1) + ' s']);
-      var dl = el('crewStats');
-      dl.textContent = '';
-      stats.forEach(function (s) {
-        var dt = document.createElement('dt'); dt.textContent = s[0];
-        var dd = document.createElement('dd'); dd.textContent = s[1];
-        dl.appendChild(dt); dl.appendChild(dd);
-      });
-      el('crewNote').textContent = !n ? 'No agents on the crew, so nothing was checked. Four bad builds went live.'
-        : bad === 1 ? 'A bad build reached a shop counter. The agent you left out is the one that would have caught it.'
-        : bad ? 'Bad builds reached shop counters. The agents you left out are the ones that would have caught them.'
-        : !crew.human ? 'Nobody signed. On my team that never ships, however good the agents are.'
-        : !crew.mcp ? 'It works, but a person copied twelve things by hand. The MCP server is what lets the agents reach the ticket themselves.'
-        : !crew.boss ? 'It works, but the reviewer got 24 loose findings where six briefs would do.'
-        : 'Zero bad builds, six short briefs, one person signing. That is the shape of what I build.';
-      el('outcome').hidden = false;
-    }
-    function step() {
-      if (id !== crewRun) return;
-      if (i >= rows.length) { done(); return; }
-      log.appendChild(rows[i++]);
-      log.scrollTop = log.scrollHeight;
-      setTimeout(step, 110);
-    }
-    if (reduce) { rows.forEach(function (r) { log.appendChild(r); }); done(); } else step();
-  }
-  function backToManual() { crewRun++; el('crew').hidden = true; restart(); }
-  Array.prototype.forEach.call(document.querySelectorAll('#roster .piece'), function (b) {
-    b.addEventListener('click', function () { var k = b.getAttribute('data-k'); crew[k] = !crew[k]; drawCrew(); });
-  });
-  el('btnCrew').addEventListener('click', openCrew);
-  el('btnCrew2').addEventListener('click', openCrew);
-  el('btnRun').addEventListener('click', runCrew);
-  el('btnFull').addEventListener('click', function () { Object.keys(crew).forEach(function (k) { crew[k] = true; }); drawCrew(); runCrew(); });
-  el('btnManual').addEventListener('click', backToManual);
-  renderPips();
 
   /* ---------- Straight answers ---------- */
   var ANSWERS = [
@@ -1094,6 +729,8 @@ h2 {
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(queue);
 })();
 </script>
+<script src="signal-city.js"></script>
+<script>SignalCity.mount(document.getElementById('signalCity'), { followPage: true });</script>
 <script src="i18n.js"></script>
 
 </body>
