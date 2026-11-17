@@ -11,7 +11,6 @@
     'Application file, reopened November 2026': 'Ficha de candidatura, reaberta em novembro de 2026',
     'Senior AI implementation specialist and software engineer from São Paulo. I automate work with AI: agents, MCP servers and the tools that let other people ship.': 'Especialista sênior em implementação de IA e engenheiro de software, de São Paulo. Eu automatizo trabalho com IA: agentes, servidores MCP e as ferramentas que permitem que outras pessoas entreguem.',
     'This is my career so far, told through the two worlds I keep going back to: the open frontier and the loud city.': 'Esta é a minha carreira até aqui, contada pelos dois mundos aos quais eu sempre volto: a fronteira aberta e a cidade barulhenta.',
-    'Scroll to ride into town. Move the pointer to look around. Click the sky for a shooting star.': 'Role a página para seguir até a cidade. Mova o ponteiro para olhar em volta. Clique no céu para ver uma estrela cadente.',
     'Chapter I · Open country': 'Capítulo I · Campo aberto',
     'Learn to ride before you pick a fight': 'Aprenda a andar a cavalo antes de comprar briga',
     'Every long game starts the same way. You have a horse, a few tools, and a lot of map you have not seen yet.': 'Todo jogo longo começa do mesmo jeito. Você tem um cavalo, algumas ferramentas e muito mapa que ainda não viu.',
